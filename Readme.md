@@ -118,21 +118,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[def]: Terminal_history
