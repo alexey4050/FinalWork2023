@@ -1,5 +1,5 @@
 # Итоговая контрольная работа
-***
+---
 ## Информация о проекте
 ***
 Необходимо организовать систему учета для питомника в котором живут
@@ -71,6 +71,21 @@
 + "Друзья человека.txt" /home/user1/Питомник
 
 [Task_2](Screenshots/Task_2.png)
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.
+
+Выполнение команды:
+
++ wget https://dev.mysql.com/get/mysql-apt-config_0.8.12-1_all.deb
++ sudo apt install ./mysql-apt-config_0.8.12-1_all.deb
++ sudo apt-get update
++ sudo apt install -f mysql-client=8.0* mysql-community-server=8.0* mysql-server=8.0*
+[Task_3.1](Screenshots/Task_3.1.png)
+[Task_3.2](Screenshots/Task_3.2.png)
+[Task_3.3](Screenshots/Task_3.3.png)
+
+
+
 
 
 
