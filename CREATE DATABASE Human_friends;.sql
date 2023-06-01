@@ -47,8 +47,6 @@ CREATE TABLE cats
     genus_id int,
     Foreign KEY (genus_id) REFERENCES home_animals (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-
 INSERT INTO cats (name, birthday, commands, genus_id)
 VALUES ('Муся', '2011-01-01', 'кс-кс-кс', 1),
 ('Ночка', '2016-01-01', 'иди ко мне', 1),  
@@ -134,3 +132,39 @@ SELECT * FROM camels;
 
 SELECT name, birthday, commands FROM horses
 UNION SELECT  name, birthday, commands FROM donkeys;
+
+INSERT into pet (Name, Command, Birthday)
+select  Name, 
+        Command, 
+        Birthday
+from cat union 
+select  Name, 
+        Command, 
+        Birthday
+from dog union
+select  Name, 
+        Command, 
+        Birthday
+from hamster;
+select * from pet;
+
+INSERT into humanFriend (Name, Command, Birthday)
+select  Name, 
+        Command, 
+        Birthday
+from pet union 
+select  Name, 
+        Command, 
+        Birthday
+from packAnimalNew;
+select * from humanFriend;
+
+create table youngAnimals (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)
+select Name, 
+        Command, 
+        Birthday,
+        Round((year(current_date()) - year(Birthday)) + (month(current_date() - month(Birthday)))/10, 2) as age
+from humanFriend
+where Round((year(current_date()) - year(Birthday)) + (month(current_date() - month(Birthday)))/10, 2) > 1 
+	and Round((year(current_date()) - year(Birthday)) + (month(current_date() - month(Birthday)))/10, 2) < 3;
+select * from youngAnimals;
