@@ -115,6 +115,8 @@
 ![Диаграмма](/Screenshots/Diagramma.png)
 
 7. В подключенном MySQL репозитории создать базу данных “Друзья человека”
+Подключенный сервер [тут](Screenshots/Base_Animals.png) 
+
 
 CREATE DATABASE Human_friends;
 

@@ -153,9 +153,9 @@ SELECT name,
 FROM donkeys;
 
 SELECT * FROM pack_Animal_New;
-/*
-Задача 6
- */
+
+/* Задача 6 */
+
 CREATE TABLE young_Animals AS
 SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM dogs
 UNION
@@ -170,9 +170,7 @@ UNION
 SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM donkeys
 WHERE TIMESTAMPDIFF(MONTH, birthday, NOW()) BETWEEN 12 AND 36;
 
-/*
-Задача 7
-*/
+/*Задача 7 */
 
 CREATE TABLE new_Animals AS
 SELECT name, birthday, commands, genus_id, 'Dogs' AS oldTable FROM dogs
