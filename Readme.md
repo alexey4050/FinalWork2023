@@ -287,6 +287,22 @@ UNION
 SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM donkeys
 WHERE TIMESTAMPDIFF(MONTH, birthday, NOW()) BETWEEN 12 AND 36;
 
+12. Объединить все таблицы в одну, при этом сохраняя поля, указывающие на
+прошлую принадлежность к старым таблицам.
+
+CREATE TABLE new_Animals AS
+SELECT name, birthday, commands, genus_id, 'Dogs' AS oldTable FROM dogs
+UNION
+SELECT name, birthday, commands, genus_id, 'Cats' AS oldTable FROM cats
+UNION
+SELECT name, birthday, commands, genus_id, 'Hamsters' AS oldTable FROM hamsters
+UNION
+SELECT name, birthday, commands, genus_id, 'Horses' AS oldTable FROM horses
+UNION
+SELECT name, birthday, commands, genus_id, 'Camels' AS oldTable FROM camels
+UNION
+SELECT name, birthday, commands, genus_id, 'Donkeys' AS oldTable FROM donkeys;
+
 
  
 
