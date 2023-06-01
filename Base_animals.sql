@@ -1,5 +1,6 @@
+/*1*/
 CREATE DATABASE Human_friends;
-
+/*2*/
 USE Human_friends;
 CREATE TABLE animal_classes
 (
@@ -48,6 +49,7 @@ CREATE TABLE cats
     Foreign KEY (genus_id) REFERENCES home_animals (id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+/*3*/
 
 INSERT INTO cats (name, birthday, commands, genus_id)
 VALUES ('Муся', '2011-01-01', 'кс-кс-кс', 1),
@@ -128,9 +130,33 @@ VALUES ('Горбатый', '2022-04-10', 'вернись', 3),
 ('Самец', '2019-03-12', 'остановись', 3),  
 ('Сифон', '2015-07-12', 'повернись', 3), 
 ('Борода', '2022-12-10', 'улыбнись', 3);
-
+/*4*/
 DELETE from camels WHERE id > 0;
 SELECT * FROM camels;
+/*5*/
+CREATE TABLE pack_Animal_New (id INT NOT NULL PRIMARY KEY)
+SELECT name, 
+       command, 
+       birthday
+FROM horses UNION 
+SELECT name, 
+       command, 
+       birthday
+FROM donkeys;
+SELECT * FROM pack_Animal_New;
 
-SELECT name, birthday, commands FROM horses
-UNION SELECT  name, birthday, commands FROM donkeys;
+/*6*/
+
+CREATE TABLE young_Animals AS
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM dogs
+UNION
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM cats
+UNION
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM hamsters
+UNION
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM horses
+UNION
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM camels
+UNION
+SELECT *, CONCAT(TIMESTAMPDIFF(YEAR, birthday, NOW()), " г ", TIMESTAMPDIFF(MONTH, birthday, NOW()) - (12 * TIMESTAMPDIFF(YEAR, birthday, NOW())), " м") AS age FROM donkeys
+WHERE TIMESTAMPDIFF(MONTH, birthday, NOW()) BETWEEN 12 AND 36;
